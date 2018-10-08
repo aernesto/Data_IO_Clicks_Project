@@ -1,3 +1,4 @@
 .idea/*
 venv/*
 path_to_data.txt
+__pycache__/*
