@@ -1,0 +1,2 @@
+db_name,num_trials,stim_hazard,low_rate,high_rate,trial_duration,lin_disc,lin_noise,nonlin_disc,nonlin_noise,stim_script,stim_commit,lin_dec_script,lin_dec_commit,nonlin_dec_script,nonlin_dec_commit,db_url
+db1.h5,10000,1,5,20,2,5,1.3862943611198906,0.5,1.3862943611198906,create_db.py,394f3c4,fill_lin_dec.m,2d7dd15,fill_nonlin_dec.m,46d9513,https://app.box.com/s/du4lm7r3oparq1fa9i5hsl13nyi7ox8b
