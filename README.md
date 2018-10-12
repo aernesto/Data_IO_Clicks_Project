@@ -40,3 +40,5 @@ I strongly encourage you to make your data freely and publicly available, and to
 # Dependencies
 Many functions from this repo use (without much warning), functions from the following the repo:
 [`ideal_obs_dyn_clicks`](https://github.com/aernesto/ideal_obs_dyn_clicks/tree/dev). I personally use [ToolboxToolbox](https://github.com/ToolboxHub/ToolboxToolbox) in MATLAB to automatically manage these dependencies.
+
+The code that I am currently writing to analyze this data may be found in [this repo](https://github.com/aernesto/analysis_and_fits_dyn_clicks/tree/dev).
