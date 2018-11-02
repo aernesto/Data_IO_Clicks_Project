@@ -1,9 +1,9 @@
 function fill_lin_dec(disc, dbname, sigma)
 % arguments passed to the script should be in the following order:
-%    1. decision_hazard=hazard rate used by observer model to discount evidence
+%    1. disc=discounting rate used by observer model to discount evidence
 %    2. dbname=db filename (full path)
 %    3. sigma=noise width on clicks height (stdev)
-% NOTE: This function calls 'decide_nonlin_noise()' function
+% NOTE: This function calls 'decide_lin_noise()' function
 %       Also, there might be a way to parallelize the code, if speed is an
 %       issue
 
