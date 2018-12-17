@@ -24,9 +24,7 @@ You may download data by clicking on the appropriate URL in the 'db_url' column 
 I claim no copyright on this data.
 
 # How to read the data with MATLAB
-I suggest you first take a close look at this [manual](https://github.com/aernesto/Data_IO_Clicks_Project/blob/design/Manual_Reading_Data.m).
-
-Then, you may use 
+This [manual](https://github.com/aernesto/Data_IO_Clicks_Project/blob/design/Manual_Reading_Data.m) should contain all the necessary information.
 
 # How to create new data with Python 3 and MATLAB
 Creating a new HDF5 database is (currently) a 3-step procedure. 
