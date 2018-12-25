@@ -1,9 +1,11 @@
-function params=fetch_params(dbname, model_type)
+function params=fetch_params(dbname, model_type, varargin)
 % fetches parameters associated with the given database and decision model
 % ARGS:
 %   dbname          full path to .h5 db file
 %   model_type      one of 'lin' or 'nonlin'. Specifies the model which
 %                   produced the choice data present in the database
+%   varargin        accepts the key-value pair 'pureTrials', true/false,
+%                   if false, function won't try to access datasets decision*  
 % RETURNS:
 %   params          struct with parameter values. Field names should be
 %                   self explanatory
@@ -19,8 +21,22 @@ group_name = file_info.Groups.Name;
 % 'decision_lin' and 'decision_nonlin':
 trials_dset_name=[group_name,'/trials'];
 info_dset_name=[group_name,'/trial_info'];
-nonlin_decision_dset_name=[group_name,'/decision_nonlin'];
-lin_decision_dset_name=[group_name,'/decision_lin'];
+
+if nargin > 0
+    if strcmp(varargin{1}{1},'pureTrials') && varargin{1}{2}
+        skipDecisionDsets = true;
+    elseif strcmp(varargin{1}{1},'pureTrials') && ~varargin{1}{2}
+        nonlin_decision_dset_name=[group_name,'/decision_nonlin'];
+        lin_decision_dset_name=[group_name,'/decision_lin'];
+        skipDecisionDsets = false;
+    else
+        error('unrecognized key-value pair argument in varargin')
+    end
+else 
+    nonlin_decision_dset_name=[group_name,'/decision_nonlin'];
+    lin_decision_dset_name=[group_name,'/decision_lin'];
+    skipDecisionDsets = false;
+end
 
 %- Read off parameters
 % The dataset named '/trials' contains click times and environment state
@@ -38,10 +54,10 @@ params.high_rate = h5readatt(filename, info_dset_name,'high_click_rate');
 params.kappa = log(params.high_rate/params.low_rate);
 params.S = h5readatt(filename, info_dset_name,'S');  
 params.model_type = model_type;
-if strcmp(model_type,'lin')
+if strcmp(model_type,'lin') && ~skipDecisionDsets
     params.disc = h5readatt(filename, lin_decision_dset_name, 'disc_lin');
     params.noise= h5readatt(filename, lin_decision_dset_name, 'noise');
-elseif strcmp(model_type,'nonlin')
+elseif strcmp(model_type,'nonlin') && ~skipDecisionDsets
     params.disc = h5readatt(filename, nonlin_decision_dset_name,...
         'disc_nonlin');
     params.noise= h5readatt(filename, nonlin_decision_dset_name, 'noise');
