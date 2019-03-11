@@ -23,9 +23,9 @@ trials_dset_name=[group_name,'/trials'];
 info_dset_name=[group_name,'/trial_info'];
 
 if nargin > 0
-    if strcmp(varargin{1}{1},'pureTrials') && varargin{1}{2}
+    if strcmp(varargin{1},'pureTrials') && varargin{2}
         skipDecisionDsets = true;
-    elseif strcmp(varargin{1}{1},'pureTrials') && ~varargin{1}{2}
+    elseif strcmp(varargin{1},'pureTrials') && ~varargin{2}
         nonlin_decision_dset_name=[group_name,'/decision_nonlin'];
         lin_decision_dset_name=[group_name,'/decision_lin'];
         skipDecisionDsets = false;
